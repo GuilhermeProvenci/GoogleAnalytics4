@@ -10,8 +10,8 @@ type
     ['{7D7E3C3C-7A5C-4EBB-A7B0-65603FF317C6}']
     function GooglePropertyID: String; overload;
     function GooglePropertyID(Value: String): iControllerGoogleAnalytics; overload;
-    function GooogleApiSecretKey(Value: String): iControllerGoogleAnalytics; overload;
-    function GooogleApiSecretKey :string; overload;
+    function GoogleApiSecretKey(Value: String): iControllerGoogleAnalytics; overload;
+    function GoogleApiSecretKey :string; overload;
     function ClienteID: String; overload;
     function ClienteID(Value: String): iControllerGoogleAnalytics; overload;
     function UserID: String; overload;
