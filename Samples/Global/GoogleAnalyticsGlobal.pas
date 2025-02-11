@@ -14,8 +14,8 @@ uses
 
 const
   //Google Analytics property ID.
-  GooglePropertyID =  'ID DA MÉTRICA';
-  GooogleApiSecretKey = 'YOURKEYHERE';
+  GooglePropertyID =  'ID DA MÃ‰TRICA';
+  GoogleApiSecretKey = 'YOURKEYHERE';
   AppName = 'Minha Aplicacao';
   AppLicense = 'Comercial';
   AppEdition = 'ERP';
@@ -23,7 +23,7 @@ const
 
 initialization
   _GoogleAnalytics  :=  TControllerGoogleAnalytics
-                          .New(GooglePropertyID, GooogleApiSecretKey);
+                          .New(GooglePropertyID, GoogleApiSecretKey);
 
   _GoogleAnalytics.AppInfo
     .AppName(AppName)
