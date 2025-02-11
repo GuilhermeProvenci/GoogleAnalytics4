@@ -76,7 +76,7 @@ begin
   try
     Params := TStringList.Create;
     try
-      Params.Values['&api_secret']:= FParent.GooogleApiSecretKey;
+      Params.Values['&api_secret']:= FParent.GoogleApiSecretKey;
       Params.Values['&measurement_id']:= FParent.GooglePropertyID;
       try
         ResponseContent:= HTTPClient.Post(StringReplace(FParent.URL+Params.Text,#$D#$A,'',[rfReplaceAll]),ResponseStream).StatusCode.ToString;
