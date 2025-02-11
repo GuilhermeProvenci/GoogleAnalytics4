@@ -8,7 +8,7 @@ type
   private
     FScreenResolution: TControllerGoogleAnalytics;
     FGooglePropertyID: String;
-    FGooogleApiSecretKey: String;
+    FgoogleApiSecretKey: String;
     FClienteID: String;
     FUserID: String;
     FSystemPlatform: String;
@@ -23,13 +23,13 @@ type
     procedure ValidaDados;
     procedure SetX(const Value: String);
     procedure SetY(const Value: String);  public
-    constructor Create(AGooglePropertyID, AGooogleApisecretKey: String; AUserID: String = '');
+    constructor Create(AGooglePropertyID, AgoogleApisecretKey: String; AUserID: String = '');
     destructor Destroy; override;
-    class function New(AGooglePropertyID, AGooogleApisecretKey: String; AUserID: String = ''): iControllerGoogleAnalytics;
+    class function New(AGooglePropertyID, AgoogleApisecretKey: String; AUserID: String = ''): iControllerGoogleAnalytics;
     function GooglePropertyID: String; overload;
     function GooglePropertyID(Value: String): iControllerGoogleAnalytics; overload;
-    function GooogleApiSecretKey(Value: String): iControllerGoogleAnalytics;overload;
-    function GooogleApiSecretKey: String; overload;
+    function googleApiSecretKey(Value: String): iControllerGoogleAnalytics;overload;
+    function googleApiSecretKey: String; overload;
     function ClienteID: String; overload;
     function ClienteID(Value: String): iControllerGoogleAnalytics; overload;
     function UserID: String; overload;
@@ -75,10 +75,10 @@ function TControllerGoogleAnalytics.ClienteID: String;
 begin
   Result  :=  FClienteID;
 end;
-constructor TControllerGoogleAnalytics.Create(AGooglePropertyID, AGooogleApisecretKey: String; AUserID: String = '');
+constructor TControllerGoogleAnalytics.Create(AGooglePropertyID, AgoogleApisecretKey: String; AUserID: String = '');
 begin
   FGooglePropertyID :=  AGooglePropertyID;
-  FGooogleApiSecretKey:= AGooogleApisecretKey;
+  FgoogleApiSecretKey:= AgoogleApisecretKey;
   FUserID :=  AUserID;
   FClienteID  := GuidCreate;
   FSystemPlatform  := GetSystemPlatform;
@@ -169,15 +169,15 @@ begin
   Result:=  Self;
   FGooglePropertyID :=  Value;
 end;
-function TControllerGoogleAnalytics.GooogleApiSecretKey: String;
+function TControllerGoogleAnalytics.googleApiSecretKey: String;
 begin
-  result:= FGooogleApiSecretKey;
+  result:= FgoogleApiSecretKey;
 end;
 
-function TControllerGoogleAnalytics.GooogleApiSecretKey( Value: String): iControllerGoogleAnalytics;
+function TControllerGoogleAnalytics.googleApiSecretKey( Value: String): iControllerGoogleAnalytics;
 begin
   result:= Self;
-  FGooogleApiSecretKey:= value;
+  FgoogleApiSecretKey:= value;
 end;
 
 function TControllerGoogleAnalytics.GuidCreate: string;
@@ -192,14 +192,14 @@ function TControllerGoogleAnalytics.GooglePropertyID: String;
 begin
   Result  :=  FGooglePropertyID;
 end;
-class function TControllerGoogleAnalytics.New(AGooglePropertyID, AGooogleApisecretKey: String; AUserID: String = ''): iControllerGoogleAnalytics;
+class function TControllerGoogleAnalytics.New(AGooglePropertyID, AgoogleApisecretKey: String; AUserID: String = ''): iControllerGoogleAnalytics;
 begin
   if not Assigned(FInstance) then
-    FInstance := Self.Create(AGooglePropertyID, AGooogleApisecretKey, AUserID)
+    FInstance := Self.Create(AGooglePropertyID, AgoogleApisecretKey, AUserID)
   else
     FInstance
       .GooglePropertyID(AGooglePropertyID)
-      .GooogleApiSecretKey(AGooogleApisecretKey)
+      .googleApiSecretKey(AgoogleApisecretKey)
       .UserID(AUserID);
   Result := FInstance;
 end;
@@ -275,7 +275,7 @@ end;
 procedure TControllerGoogleAnalytics.ValidaDados;
 begin
   if Trim(FGooglePropertyID) = '' then
-    raise System.SysUtils.Exception.Create('Google Property ID "TID" n„o informado!');
+    raise System.SysUtils.Exception.Create('Google Property ID "TID" n√£o informado!');
 end;
 function TControllerGoogleAnalytics.UserID: String;
 begin
