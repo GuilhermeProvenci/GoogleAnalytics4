@@ -1,4 +1,4 @@
-unit Google.Controller.Analytics;
+﻿unit Google.Controller.Analytics;
 interface
 uses
   Google.Controller.Analytics.Interfaces,

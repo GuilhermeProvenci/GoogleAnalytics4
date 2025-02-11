@@ -14,7 +14,8 @@ uses
   Google.Model.Analytics.Invoker in '..\..\Source\Model\Google.Model.Analytics.Invoker.pas',
   Google.Model.Analytics.PageView in '..\..\Source\Model\Google.Model.Analytics.PageView.pas',
   Google.Model.Analytics.ScreenView in '..\..\Source\Model\Google.Model.Analytics.ScreenView.pas',
-  Google.Model.Analytics.Session in '..\..\Source\Model\Google.Model.Analytics.Session.pas';
+  Google.Model.Analytics.Session in '..\..\Source\Model\Google.Model.Analytics.Session.pas',
+  DotEnv in '..\..\Source\DotEnv.pas';
 
 {$R *.res}
 begin

@@ -1,29 +1,37 @@
-unit GoogleAnalyticsGlobal;
+﻿unit GoogleAnalyticsGlobal;
 
 interface
 
 uses
   Google.Controller.Analytics.Interfaces;
 
-var _GoogleAnalytics: iControllerGoogleAnalytics;
+var
+  _GoogleAnalytics: iControllerGoogleAnalytics;
 
 implementation
 
 uses
-  Google.Controller.Analytics;
+  Google.Controller.Analytics, DotEnv, System.SysUtils;
 
-const
-  //Google Analytics property ID.
-  GooglePropertyID =  'ID DA MÉTRICA';
-  GoogleApiSecretKey = 'YOURKEYHERE';
-  AppName = 'Minha Aplicacao';
-  AppLicense = 'Comercial';
-  AppEdition = 'ERP';
-  VersaoSistema = '1.0.0';
+var
+  DotEnv: TDotEnv;
+  GooglePropertyID, GoogleApiSecretKey, AppName, AppLicense, AppEdition, VersaoSistema: string;
 
 initialization
-  _GoogleAnalytics  :=  TControllerGoogleAnalytics
-                          .New(GooglePropertyID, GoogleApiSecretKey);
+  DotEnv := TDotEnv.Create('.env');
+  try
+    GooglePropertyID   := DotEnv.Get('GOOGLE_PROPERTY_ID', '');
+    GoogleApiSecretKey := DotEnv.Get('GOOGLE_API_SECRET', '');
+    AppName            := DotEnv.Get('APP_NAME', 'Aplicacao');
+    AppLicense         := DotEnv.Get('APP_LICENSE', 'Comercial');
+    AppEdition         := DotEnv.Get('APP_EDITION', 'ERP');
+    VersaoSistema      := DotEnv.Get('APP_VERSION', '1.0.0');
+  finally
+    DotEnv.Free;
+  end;
+
+  _GoogleAnalytics := TControllerGoogleAnalytics
+                        .New(GooglePropertyID, GoogleApiSecretKey);
 
   _GoogleAnalytics.AppInfo
     .AppName(AppName)
@@ -31,4 +39,8 @@ initialization
     .AppLicense(AppLicense)
     .AppEdition(AppEdition);
 
+finalization
+  _GoogleAnalytics.EndSession;
+
 end.
+
