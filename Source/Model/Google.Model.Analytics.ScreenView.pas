@@ -52,7 +52,7 @@ begin
   try
     Params := TStringList.Create;
     try
-      Params.Values['&api_secret']:= StringReplace(FParent.GooogleApiSecretKey,#$D#$A,'',[rfReplaceAll]);
+      Params.Values['&api_secret']:= StringReplace(FParent.GoogleApiSecretKey,#$D#$A,'',[rfReplaceAll]);
       Params.Values['&measurement_id']:= StringReplace(FParent.GooglePropertyID,#$D#$A,'',[rfReplaceAll]);;
       try
         ResponseContent:= HTTPClient.Post(StringReplace(FParent.URL+Params.Text,#$D#$A,'',[rfReplaceAll]),ResponseStream).StatusCode.ToString;
@@ -63,7 +63,7 @@ begin
 
       /// Send Screen Resolution
       ResponseStream:= TStringStream.Create(self.GetJsonScreenResolution,TEncoding.UTF8);
-      Params.Values['&api_secret']:= StringReplace(FParent.GooogleApiSecretKey,#$D#$A,'',[rfReplaceAll]);
+      Params.Values['&api_secret']:= StringReplace(FParent.GoogleApiSecretKey,#$D#$A,'',[rfReplaceAll]);
       Params.Values['&measurement_id']:= StringReplace(FParent.GooglePropertyID,#$D#$A,'',[rfReplaceAll]);;
       try
         ResponseContent:= HTTPClient.Post(StringReplace(FParent.URL+Params.Text,#$D#$A,'',[rfReplaceAll]),ResponseStream).StatusCode.ToString;
@@ -74,7 +74,7 @@ begin
 
       /// Send OS
       ResponseStream:= TStringStream.Create(self.GetJsonOS,TEncoding.UTF8);
-      Params.Values['&api_secret']:= StringReplace(FParent.GooogleApiSecretKey,#$D#$A,'',[rfReplaceAll]);
+      Params.Values['&api_secret']:= StringReplace(FParent.GoogleApiSecretKey,#$D#$A,'',[rfReplaceAll]);
       Params.Values['&measurement_id']:= StringReplace(FParent.GooglePropertyID,#$D#$A,'',[rfReplaceAll]);;
       try
         ResponseContent:= HTTPClient.Post(StringReplace(FParent.URL+Params.Text,#$D#$A,'',[rfReplaceAll]),ResponseStream).StatusCode.ToString;
